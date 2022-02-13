@@ -140,6 +140,10 @@ async function video_download(path, url, title) {
         responseType: 'stream'
     })
 
+    //path = path.replace(/\//g, "-");
+    //console.log('Print: ');    
+    //console.log(path);    
+    
     response.data.pipe(fs.createWriteStream(path))
 
     return new Promise((resolve, reject) => {
@@ -167,6 +171,9 @@ function http_request(options) {
  * @param {string} dir 
  */
 function create_folder(dir) {
+    //dir = dir.replace(/\//g, "-");
+    //console.log("Print: ");
+    //console.log(dir);
     if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir);
     }
